@@ -1,10 +1,10 @@
 # Minerave_Ranks
 Minerave Rank Core
 
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
+	<repository>
+	    <id>jitpack.io</id>
+	    <url>https://jitpack.io</url>
+	</repository>
 
  	<dependency>
 	    <groupId>com.github.NoScapeDev</groupId>
