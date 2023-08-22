@@ -1,10 +1,10 @@
 ## data settings
 data:
-  host: '89.33.85.162'
+  host: 'local'
   port: 3306
-  database: 's7_minerave_ranks'
-  username: 'u7_cC1xIKpYjt'
-  password: 'Dq^oucI2Da=cfoV5bHWMn9yf'
+  database: '...'
+  username: '....'
+  password: '....'
 
 ranks:
   owner:
