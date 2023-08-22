@@ -1,0 +1,10 @@
+name: Minerave_ranks
+version: '${project.version}'
+main: net.devscape.project.minerave_ranks.MineraveRanks
+api-version: '1.13'
+authors: [DevScape]
+description: Main rank core for MineRave
+
+commands:
+  grant:
+    description: main command for ranks

@@ -1,0 +1,49 @@
+## data settings
+data:
+  host: '89.33.85.162'
+  port: 3306
+  database: 's7_minerave_ranks'
+  username: 'u7_cC1xIKpYjt'
+  password: 'Dq^oucI2Da=cfoV5bHWMn9yf'
+
+ranks:
+  owner:
+    weight: 100
+    prefix: '&c&lOWNER &7'
+    admin: true
+  manager:
+    weight: 65
+    prefix: '&c&lMANAGER &7'
+    admin: true
+  admin:
+    weight: 60
+    prefix: '&c&lADMIN &7'
+    admin: true
+  team:
+    weight: 50
+    prefix: '&9&lTEAM &7'
+    admin: false
+  mod:
+    weight: 35
+    prefix: '&b&lMOD &7'
+    admin: false
+  chatmod:
+    weight: 34
+    prefix: '&3&lCHATMOD &7'
+    admin: false
+  creator:
+    weight: 30
+    prefix: '&c&lCREATOR &7'
+    admin: false
+  donator-2:
+    weight: 21
+    prefix: '&6&lD-1 &7'
+    admin: false
+  donator-1:
+    weight: 20
+    prefix: '&6&lD-2 &7'
+    admin: false
+  default:
+    weight: 0
+    prefix: '&7'
+    admin: false
