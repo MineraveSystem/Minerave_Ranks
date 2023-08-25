@@ -18,7 +18,6 @@ public class RankManager {
                 return rank;
             }
         }
-
         return null;
     }
 
@@ -30,6 +29,8 @@ public class RankManager {
             //String suffix = MineraveRanks.getMineraveRanks().getConfig().getString("ranks." + str + ".suffix");
             //String displayname = MineraveRanks.getMineraveRanks().getConfig().getString("ranks." + str + ".displayname");
             boolean admin = MineraveRanks.getMineraveRanks().getConfig().getBoolean("ranks." + str + ".admin");
+            boolean staff = MineraveRanks.getMineraveRanks().getConfig().getBoolean("ranks." + str + ".staff");
+            boolean donor = MineraveRanks.getMineraveRanks().getConfig().getBoolean("ranks." + str + ".donor");
 
             Rank rank = new Rank(
                     str,
@@ -37,7 +38,9 @@ public class RankManager {
                     prefix,
                     "",
                     "",
-                    admin);
+                    admin,
+                    staff,
+                    donor);
 
             rankMap.add(rank);
         }

@@ -11,39 +11,59 @@ ranks:
     weight: 100
     prefix: '&c&lOWNER &7'
     admin: true
+    staff: true
+    donor: false
   manager:
     weight: 65
     prefix: '&c&lMANAGER &7'
     admin: true
+    staff: true
+    donor: false
   admin:
     weight: 60
     prefix: '&c&lADMIN &7'
     admin: true
+    staff: true
+    donor: false
   team:
     weight: 50
     prefix: '&9&lTEAM &7'
     admin: false
+    staff: true
+    donor: false
   mod:
     weight: 35
     prefix: '&b&lMOD &7'
     admin: false
+    staff: true
+    donor: false
   chatmod:
     weight: 34
     prefix: '&3&lCHATMOD &7'
     admin: false
+    staff: true
+    donor: false
   creator:
     weight: 30
     prefix: '&c&lCREATOR &7'
     admin: false
+    staff: false
+    donor: false
   donator-2:
     weight: 21
     prefix: '&6&lD-1 &7'
     admin: false
+    staff: false
+    donor: true
   donator-1:
     weight: 20
     prefix: '&6&lD-2 &7'
     admin: false
+    staff: false
+    donor: true
   default:
     weight: 0
     prefix: '&7'
     admin: false
+    staff: false
+    donor: false
