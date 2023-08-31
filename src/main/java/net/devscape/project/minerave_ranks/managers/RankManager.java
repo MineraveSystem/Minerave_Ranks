@@ -22,31 +22,24 @@ public class RankManager {
     }
 
     public void load() {
-        for (String str : MineraveRanks.getMineraveRanks().getConfig().getConfigurationSection("ranks").getKeys(false)) {
-
-            int weight = MineraveRanks.getMineraveRanks().getConfig().getInt("ranks." + str + ".weight");
-            String prefix = MineraveRanks.getMineraveRanks().getConfig().getString("ranks." + str + ".prefix");
-            //String suffix = MineraveRanks.getMineraveRanks().getConfig().getString("ranks." + str + ".suffix");
-            //String displayname = MineraveRanks.getMineraveRanks().getConfig().getString("ranks." + str + ".displayname");
-            boolean admin = MineraveRanks.getMineraveRanks().getConfig().getBoolean("ranks." + str + ".admin");
-            boolean staff = MineraveRanks.getMineraveRanks().getConfig().getBoolean("ranks." + str + ".staff");
-            boolean donor = MineraveRanks.getMineraveRanks().getConfig().getBoolean("ranks." + str + ".donor");
+        for (String str : MineraveRanks.getMineraveRanks().getRankDB().getAllRanks()) {
+            int weight = MineraveRanks.getMineraveRanks().getRankDB().getWeight(str);
+            String prefix = MineraveRanks.getMineraveRanks().getRankDB().getPrefix(str);
+            String suffix = MineraveRanks.getMineraveRanks().getRankDB().getSuffix(str);
+            boolean admin = MineraveRanks.getMineraveRanks().getRankDB().isAdmin(str);
+            boolean staff = MineraveRanks.getMineraveRanks().getRankDB().isStaff(str);
+            boolean donor = MineraveRanks.getMineraveRanks().getRankDB().isDonor(str);
 
             Rank rank = new Rank(
                     str,
                     weight,
                     prefix,
-                    "",
-                    "",
+                    suffix,
                     admin,
                     staff,
                     donor);
 
             rankMap.add(rank);
         }
-    }
-
-    public void save() {
-
     }
 }

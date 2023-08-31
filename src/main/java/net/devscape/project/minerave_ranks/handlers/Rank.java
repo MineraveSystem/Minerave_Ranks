@@ -11,17 +11,15 @@ public class Rank {
     private int weight;
     private String prefix;
     private String suffix;
-    private String color;
     private boolean isAdmin;
     private boolean isDonor;
     private boolean isStaff;
 
-    public Rank(String name, int weight, String prefix, String suffix, String color, boolean isAdmin, boolean isDonor, boolean isStaff) {
+    public Rank(String name, int weight, String prefix, String suffix, boolean isAdmin, boolean isDonor, boolean isStaff) {
         this.name = name;
         this.weight = weight;
         this.prefix = prefix;
         this.suffix = suffix;
-        this.color = color;
         this.isAdmin = isAdmin;
         this.isDonor = isDonor;
         this.isStaff = isStaff;

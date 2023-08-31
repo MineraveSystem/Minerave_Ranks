@@ -7,4 +7,6 @@ description: Main rank core for MineRave
 
 commands:
   grant:
-    description: main command for ranks
+    description: main command for granting users.
+  group:
+    description: main group command for rank.

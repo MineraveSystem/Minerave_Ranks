@@ -2,10 +2,12 @@ package net.devscape.project.minerave_ranks;
 
 import lombok.Getter;
 import net.devscape.project.minerave_ranks.Listeners.PlayerJoin;
-import net.devscape.project.minerave_ranks.commands.RankCommand;
+import net.devscape.project.minerave_ranks.commands.GrantCommand;
+import net.devscape.project.minerave_ranks.commands.GroupCommand;
 import net.devscape.project.minerave_ranks.managers.PlayerDataClass;
 import net.devscape.project.minerave_ranks.managers.RankManager;
 import net.devscape.project.minerave_ranks.storage.MariaDB;
+import net.devscape.project.minerave_ranks.storage.RankDB;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.SQLException;
@@ -15,6 +17,7 @@ public final class MineraveRanks extends JavaPlugin {
 
     private static MineraveRanks mineraveRanks;
     private MariaDB mariadb;
+    private RankDB rankDB;
     private RankManager rankManager;
     private PlayerDataClass playerDataClass;
 
@@ -29,6 +32,8 @@ public final class MineraveRanks extends JavaPlugin {
                 getConfig().getString("data.database"),
                 getConfig().getString("data.username"),
                 getConfig().getString("data.password"));
+
+        this.rankDB = new RankDB();
 
         rankManager = new RankManager();
         playerDataClass = new PlayerDataClass();
@@ -50,7 +55,8 @@ public final class MineraveRanks extends JavaPlugin {
     }
 
     public void loadCommands() {
-        getCommand("grant").setExecutor(new RankCommand());
+        getCommand("grant").setExecutor(new GrantCommand());
+        getCommand("group").setExecutor(new GroupCommand());
     }
 
     public void loadListeners() {

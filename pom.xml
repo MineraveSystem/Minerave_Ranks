@@ -6,7 +6,7 @@
 
     <groupId>net.devscape.project</groupId>
     <artifactId>Minerave_ranks</artifactId>
-    <version>1.2</version>
+    <version>1.5</version>
     <packaging>jar</packaging>
 
     <name>Minerave_ranks</name>
