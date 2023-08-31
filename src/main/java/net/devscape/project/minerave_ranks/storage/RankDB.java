@@ -2,9 +2,6 @@ package net.devscape.project.minerave_ranks.storage;
 
 import lombok.Getter;
 import net.devscape.project.minerave_ranks.MineraveRanks;
-import net.devscape.project.minerave_ranks.handlers.Rank;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.boss.BossBar;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -22,13 +19,16 @@ public class RankDB {
     }
 
     public void createTable() {
-        String rankTable = "CREATE TABLE IF NOT EXISTS `users` " +
+        String rankTable = "CREATE TABLE IF NOT EXISTS `ranks` " +
                 "(Name VARCHAR(255) NOT NULL, " +
                 "Weight VARCHAR(255) NOT NULL, " +
                 "Prefix VARCHAR(255) NOT NULL, " +
                 "Suffix VARCHAR(255) NOT NULL, " +
-                "Permission VARCHAR(255) NOT NULL, " +
-                "PRIMARY KEY (UUID))";
+                "isDonor VARCHAR(255) NOT NULL, " +
+                "isStaff VARCHAR(255) NOT NULL, " +
+                "isAdmin VARCHAR(255) NOT NULL, " +
+                "Permissions VARCHAR(255) NOT NULL, " +
+                "PRIMARY KEY (Name))";
 
         Statement stmt;
         try {
@@ -54,7 +54,7 @@ public class RankDB {
         return false;
     }
 
-    public void createRank(String rank, int weight, String prefix, String suffix) {
+    public void createRank(String rank, int weight, String prefix, String suffix, boolean isDonor, boolean isStaff, boolean isAdmin) {
         if (rankExists(rank)) {
             return;
         }
@@ -63,11 +63,11 @@ public class RankDB {
                 "INSERT INTO `ranks` (Name, Weight, Prefix, Suffix, isDonor, isStaff, isAdmin, Permissions) VALUES (?,?,?,?,?,?,?,?)")) {
             statement.setString(1, rank); // rank name
             statement.setInt(2, weight); // weight
-            statement.setString(3, ""); // prefix
-            statement.setString(4, ""); // suffix
-            statement.setBoolean(5, false); // donor
-            statement.setBoolean(6, false); // staff
-            statement.setBoolean(7, false); // admin
+            statement.setString(3, prefix); // prefix
+            statement.setString(4,  suffix); // suffix
+            statement.setBoolean(5, isDonor); // donor
+            statement.setBoolean(6, isStaff); // staff
+            statement.setBoolean(7, isAdmin); // admin
             statement.setString(8, ""); // permissions
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -87,17 +87,14 @@ public class RankDB {
                 ResultSet result = statement.executeQuery();
 
                 if (result.next()) {
-                    int weight = result.getInt("weight");
+                    int weight = result.getInt("Weight");
                     String displayname = result.getString("displayname");
-                    String prefix = result.getString("prefix");
-                    String suffix = result.getString("suffix");
-                    boolean isdefault = result.getBoolean("isdefault");
+                    String prefix = result.getString("Prefix");
+                    String suffix = result.getString("Suffix");
+                    boolean isdefault = result.getBoolean("isDefault");
 
-                    String permissionsString = result.getString("permissions");
+                    String permissionsString = result.getString("Permissions");
                     List<String> permissions = deserializePermissions(permissionsString);
-
-                    String inheritancesString = result.getString("inheritances");
-                    List<String> inheritances = deserializePermissions(inheritancesString);
 
                     //Rank rank = new Rank(name, weight, displayname, prefix, suffix, isdefault);
                     //MineraveRanks.getMineraveRanks().getRankManager().getRankMap().add(rank);
@@ -280,54 +277,81 @@ public class RankDB {
                 "default",
                 0,
                 "&f兆 &7",
-                "");
+                "",
+                false,
+                false,
+                false);
 
         createRank(
                 "vip",
                 30,
                 "&f充 &f",
-                "");
+                "",
+                true,
+                false,
+                false);
 
         createRank(
                 "ultimate",
                 35,
                 "&f兄 &f",
-                "");
+                "",
+                true,
+                false,
+                false);
 
         createRank(
                 "creator",
                 35,
                 "&f先 &7",
-                "");
+                "",
+                false,
+                false,
+                false);
 
         createRank(
                 "chatmod",
                 40,
                 "&f元 &#4185ff",
-                "");
+                "",
+                false,
+                true,
+                false);
 
         createRank(
                 "mod",
                 45,
                 "&f優 &#4185ff",
-                "");
+                "",
+                false,
+                true,
+                false);
 
         createRank(
                 "team",
                 50,
-                "&f儒 &#ff2b2b",
-                "");
+                "&f償 &#7053ff",
+                "",
+                false,
+                true,
+                false);
 
         createRank(
                 "admin",
                 60,
                 "&f儒 &#ff2b2b",
-                "");
+                "",
+                false,
+                false,
+                true);
 
         createRank(
                 "owner",
                 100,
-                "&f倹 &#7053ff",
-                "");
+                "&f倹 &#ff2b2b",
+                "",
+                false,
+                false,
+                true);
     }
 }
